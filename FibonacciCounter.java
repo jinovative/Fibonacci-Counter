@@ -31,18 +31,18 @@ public class FibonacciCounter {
 
   // A method that returns the Fibonacci number corresponding to the current count.
 
-  public int corresponding() {
+  public int currentCount() {
     if (count <= 1) {
       return count;
     }
 
-    int num1 = 0;
-    int num2 = 1;
-    for (int i =2; i <= count; i++) {
-      int current = num1;
-      num1 += num2;
-      num2 = current;
+    int prevPrevNum = 1; // 전 전 항 (n-2)
+    int prevNum = 1; // 이전 항 (n-1)
+
+    for (int i = 3; i < count; i++) {
+      int curNum = prevPrevNum + prevNum; // 현재 항 (n)
+      prevPrevNum = prevNum;
+      prevNum = curNum;
     }
-    return num1;
-  }
+    return curNum;
 }
