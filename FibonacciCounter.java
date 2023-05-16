@@ -4,32 +4,45 @@
 
 public class FibonacciCounter {
   // A constructor that takes the initial count value and initializes the object appropriately.
-  private int x;
-  private int y;
-  private int n;
+  private int count;
+
+  public FibonacciCounter(int initialCount) {
+    count = initialCount;
+  }
 
 
   // A method that returns a FibonacciCounter object with its count incremented by 1.
 
-  public int incremented () {
-    return 0;
+  public FibonacciCounter incremented () {
+    return new FibonacciCounter(count +1);
   }
 
 
   // A method that returns a FibonacciCounter object with its count decremented by 1. If it cannot be decremented, it returns the object with the same count.
-  public int decremented() {
-    return 0;
+  public FibonacciCounter decremented() {
+    return new FibonacciCounter(count -1);
   }
 
   // A method that returns the current count of the counter.
 
   public int counter() {
-    return 0;
+    return count;
   }
 
   // A method that returns the Fibonacci number corresponding to the current count.
 
   public int corresponding() {
-    return 0;
+    if (count <= 1) {
+      return count;
+    }
+
+    int num1 = 0;
+    int num2 = 1;
+    for (int i =2; i <= count; i++) {
+      int current = num1;
+      num1 += num2;
+      num2 = current;
+    }
+    return num1;
   }
 }
